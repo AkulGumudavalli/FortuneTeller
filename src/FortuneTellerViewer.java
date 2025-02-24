@@ -14,12 +14,11 @@ public class FortuneTellerViewer {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 600);
         frame.setLayout(new BorderLayout());
-        ImageIcon icon = new ImageIcon("C:\\Users\\akulg\\IdeaProjects\\FortuneTeller\\src\\crystal-ball-fortune-telling-magic-600nw-2477247181.pngcrystal-ball-fortune-telling-magic-600nw-2477247181.png");
+        Icon icon = new ImageIcon("src/download.jpg");
         JLabel label = new JLabel("Fortune Teller", icon, JLabel.CENTER);
         label.setVerticalTextPosition(JLabel.BOTTOM);
         frame.add(label, BorderLayout.NORTH);
         label.setFont(new Font("Serif", Font.BOLD, 48));
-        label.imageUpdate(icon.getImage(),0,JLabel.CENTER,0,icon.getIconWidth(),icon.getIconHeight());
         frame.setVisible(true);
         ArrayList<String> fortunes = new ArrayList<>();
         fortunes.add("Your future is as bright as your smartphone screen.");
@@ -34,7 +33,7 @@ public class FortuneTellerViewer {
         fortunes.add("Your smile is your fortune's secret weapon.");
         fortunes.add("Good things come to those who wait... sometimes.");
         fortunes.add("Expect the unexpected, and then expect more.");
-        JTextArea textArea = new JTextArea();
+        JTextArea textArea = new JTextArea(10,25);
         textArea.setFont(new Font("Serif", Font.ITALIC, 24));
         textArea.setEditable(false);
         fortunecreator create = new fortunecreator(fortunes);
@@ -44,7 +43,6 @@ public class FortuneTellerViewer {
 
         JButton fortuneButton = new JButton("Read My Fortune");
         fortuneButton.addActionListener(e -> {
-            textArea.setText("");
             textArea.append(create.fortune()+"\n");
             scrollPane.add(textArea);
             frame.add(scrollPane, BorderLayout.CENTER);
